@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+
+    <style>
+
+      #BETA{
+        display: none;
+        text-align: center;
+      }
+#remainder{
+  width: 230px;
+  height: 20px;
+  position: absolute;
+  top: 385px;
+  left: 585px;
+  opacity: 0;
+
+}
+#setinput{
+  display: none;
+  margin: auto;
+  text-align: center;
+}
+
+   #setremainder{
+    display: none;
+    margin: auto;
+    text-align: center;
+   }
+      .theme{
+        display: block;
+        text-align: center;
+        position: relative;
+        top: 175px;
+      }
+  #dark{
+    display: block;
+    margin: auto;
+  }
+      #white{
+       display: none;
+       margin: auto;
+      }
+#body1{
+  background-color: white;
+}
+      #main{
+        background-color: white;
+      }
+        #container{
+           margin-top: 25px;
+           background-color: white;
+        }
+
+        #firstname{
+            display: block;
+            margin: auto;
+        }
+    .btn{
+           display: block;
+          margin: auto;
+            margin-top: 25px;
+        }
+
+    #imgx{
+      display: block;
+    }
+
+        #hjlk{
+          display: block;
+        }
+
+        @media (min-width: 300px) and (max-width: 415px){
+          .container{
+            margin-top: 50px;
+          }
+
+          #remaindertext{
+            display: none;
+          }
+
+          #remainder{
+            display: none;
+          }
+
+        }
+
+
+        #timer{
+          position: relative;
+          top: 200px;
+        }
+
+
+        #time{
+          display: block;
+          margin: auto;
+          text-align: center;
+        }
+    </style>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+  </head>
+  <body id="body1">
+
+<div id="container">
+  <form>
+    <input type="text"  id="firstname" placeholder="Enter Your Name" required><br>
+    <button type="button" onclick="passvalue()" value="click" class="btn btn-outline-primary">Confirm Name</button>
+    <!-- <button  type="submit"  onclick="passvalue()" value="click">Submit</button>-->
+  </form>
+ <!--  Enter Your Text Here:<br>--> 
+ <span id="imgx">
+    <form  method="post">
+   <!--<input type="text" name="name" id="name" required>reenter<br>--> 
+  <button type="submit" name="submit" id="hkjl" value="click" class="btn btn-outline-secondary">Generate link</button>
+   <!-- <button  type="submit" name="submit"  value="click">Submit</button>-->
+    </form>
+  </span>
+
+
+<span class="theme">
+    <button id="dark" onclick="myFunction()">dark</button>
+    <button id="white" onclick="myFunctionyy()">white</button>
+  </span>
+</div>
+
+<div id="time">
+  <h3>Countdown</h3>
+  <h3 id="timers"></h3>
+  <p id="remaindertext">Set remainder? Click to set.</p>
+  <button class="remainder" onclick="sendEmail()" id="remainder"></button>
+  <form method="post">
+  <input type="email" placeholder="Enter your Email to set" name="mail" required id="setinput">
+  <button type="submit" onclick="sendEmail2x()" id="setremainder">Set</button>
+  <h1 id="BETA">BETA TESTING</h1>
+</form>
+</div>
+
+
+
+
+<script>
+
+function sendEmail(){
+  var xyzx = document.getElementById("remainder");
+  const bodyxyzx = document.getElementById("container")
+  if (bodyxyzx.style.display = "block") {
+    bodyxyzx.style.display = "none";
+    document.getElementById("setinput").style.display="block";
+    document.getElementById("setremainder").style.display="block";
+    document.getElementById("remaindertext").style.display="none";
+    document.getElementById("BETA").style.display="block";
+  } else {
+    bodyxyzx.style.display = "block";
+    
+  }
+  
+}
+
+
+function sendEmail2x() {
+
+  const sender = document.getElementById("setinput").value;
+  Email.send({
+    Host: "smtp.gmail.com",
+    Username: "officialmodernxmagazines@gmail.com",
+    Password: "officialmodernxmagazines@775588@avm",
+    To: "anirudhvijay002@gmail.com",
+    From: "officialmodernxmagazines@775588@avm",
+    Subject: "Sending Email using javascript",
+    Body: "Well that was easy!!",
+  })
+    .then(function (message) {
+      alert("mail sent successfully")
+    });
+}
+
+
+
+  var countDownDate = new Date("Aug 15, 2022 12:00:00").getTime();
+  var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+  
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+  
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+    // Display the result in the element with id="demo"
+    document.getElementById("timers").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+  
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("timers").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+
+
+
+
+
+    function passvalue()
+    {
+        var firstname = document.getElementById("firstname").value;
+        localStorage.setItem("textvalue", firstname);
+        return false;
+     
+    }
+
+  
+
+  function myFunction() {
+    var x = document.getElementById("dark");
+    const body = document.getElementById("body1")
+    if (body.style.backgroundColor = "white") {
+      body.style.backgroundColor = "black";
+      body.style.color = "white"
+    } else {
+      body.style.backgroundColor = "white";
+      
+    }
+    document.getElementById("dark").style.display = "none";
+    document.getElementById("white").style.display = "block";
+  const container = document.getElementById("container")
+    if (container.style.backgroundColor = "white"){
+      container.style.backgroundColor = "black";  
+    }else {
+      container.style.backgroundColor = "white";
+    }
+  }
+
+  function myFunctionyy() {
+    var x = document.getElementById("dark");
+    const body = document.getElementById("body1")
+    if (body.style.backgroundColor = "black") {
+      body.style.backgroundColor = "white";
+    } else {
+      body.style.backgroundColor = "black";
+    }
+    document.getElementById("white").style.display = "none"
+    document.getElementById("dark").style.display = "block"
+    if (container.style.backgroundColor = "black"){
+      container.style.backgroundColor = "white";  
+    }else {
+      container.style.backgroundColor = "black";
+    }
+  }
+
+
+</script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
