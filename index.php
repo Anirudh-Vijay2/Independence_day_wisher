@@ -1,6 +1,6 @@
 <?php
 
-include 'hello.html';
+include 'index.html';
 
 
 if (array_key_exists('submit',$_POST)) {
